@@ -22,8 +22,12 @@ class Verse:
         BOOK_RE = re.compile(r"^\d*[a-zA-Z ]+")
         REF_RE = re.compile(r"\d{1,3}:\d{1,3}")
         VERSE_EXT_RE = re.compile(r"-(\d{1,3})")
+        REPLACE_ROMAN_RE = re.compile(r"^[1-3]")
 
         self.book = BOOK_RE.search(reference).group(0).strip()  # book = match of BOOK_RE minus trailing whitespace
+        nr_of_Is = int(REPLACE_ROMAN_RE.search(self.book).group(0))
+        self.book = REPLACE_ROMAN_RE.sub("I" * nr_of_Is, self.book)
+
         ref = REF_RE.search(reference).group(0)  # ref = match of REF_RE
         self.chapter, self.verse = ref.split(':')  # split chapter from verse
         self.chapter, self.verse = int(self.chapter.strip()), int(self.verse.strip())  # strip whitespace and convert to int
