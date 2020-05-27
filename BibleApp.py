@@ -25,8 +25,11 @@ class Verse:
         REPLACE_ROMAN_RE = re.compile(r"^[1-3]")
 
         self.book = BOOK_RE.search(reference).group(0).strip()  # book = match of BOOK_RE minus trailing whitespace
-        nr_of_Is = int(REPLACE_ROMAN_RE.search(self.book).group(0))
-        self.book = REPLACE_ROMAN_RE.sub("I" * nr_of_Is, self.book)
+        # nr_of_Is = int(REPLACE_ROMAN_RE.search(self.book).group(0))
+        nr_of_Is = REPLACE_ROMAN_RE.search(self.book)
+        if nr_of_Is:
+            nr_of_Is = int(nr_of_Is.group(0))
+            self.book = REPLACE_ROMAN_RE.sub("I" * nr_of_Is, self.book)
 
         ref = REF_RE.search(reference).group(0)  # ref = match of REF_RE
         self.chapter, self.verse = ref.split(':')  # split chapter from verse
