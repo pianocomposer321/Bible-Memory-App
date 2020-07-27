@@ -7,14 +7,68 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 BibleApp.py
+badd +1 BibleApp.py
 badd +1 .
-badd +0 BibleAppController.py
-badd +0 BibleAppModel.py
-badd +0 BibleAppView.py
+badd +1 BibleAppController.py
+badd +3 /mnt/c/users/tad/desktop/Bible\ App/main.py
+badd +1 /mnt/c/users/tad/desktop/Bible\ App/BibleApp.py
+badd +1 /mnt/c/users/tad/desktop/Bible\ App
+badd +1 ~/.config/nvim/init.vim
+badd +65 BibleAppModel.py
+badd +1 ~/python-projects/bible-memory-app/BibleAppViewUI.py
+badd +1 ReferenceDialog.py
+badd +2 ~/.config/nvim/coc-settings.json
 argglobal
 %argdel
 edit BibleApp.py
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+1
+normal! zo
+26
+normal! zo
+28
+normal! zo
+54
+normal! zo
+78
+normal! zo
+95
+normal! zo
+101
+normal! zo
+116
+normal! zo
+118
+normal! zo
+122
+normal! zo
+126
+normal! zo
+136
+normal! zo
+let s:l = 93 - ((33 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+93
+normal! 030|
+tabedit BibleAppModel.py
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -32,7 +86,33 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+5
+normal! zo
+let s:l = 61 - ((29 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+61
+normal! 037|
+tabedit ReferenceDialog.py
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -56,37 +136,13 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
-tabedit BibleAppModel.py
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=expr
-setlocal fde=SimpylFold#FoldExpr(v:lnum)
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 3 - ((2 * winheight(0) + 31) / 62)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-3
-normal! 0
-tabedit BibleAppView.py
+tabedit ~/python-projects/bible-memory-app/BibleAppViewUI.py
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -104,13 +160,13 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
-tabnext 4
+tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
